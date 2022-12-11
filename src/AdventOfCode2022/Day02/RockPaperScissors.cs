@@ -4,7 +4,7 @@ namespace AdventOfCode2022.Day02;
 
 public class RockPaperScissors : IEnumerable<Round>
 {
-    private List<Round> _rounds;
+    private readonly List<Round> _rounds;
 
     public RockPaperScissors(string input)
     {
@@ -60,8 +60,8 @@ public class Round
         Outcome switch
         {
             Outcome.Draw => First,
-            Outcome.Win => First == Play.Scissor ? Play.Rock : (Play)(First + 1),
-            Outcome.Lose => First == Play.Rock ? Play.Scissor : (Play)(First - 1),
+            Outcome.Win  => First == Play.Scissor ? Play.Rock : First + 1,
+            Outcome.Lose => First == Play.Rock ? Play.Scissor : First - 1,
             _ => throw new Exception()
         };
 }
