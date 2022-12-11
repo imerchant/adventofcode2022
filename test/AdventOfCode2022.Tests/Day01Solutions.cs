@@ -13,7 +13,7 @@ public class Day01Solutions
         inventory.OrderByDescending(x => x.Calories).Take(3).Sum(x => x.Calories).Should().Be(205370);
     }
 
-    public static string Example =
+    public const string Example =
 @"000
 2000
 3000
