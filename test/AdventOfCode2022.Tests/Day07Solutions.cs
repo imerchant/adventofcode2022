@@ -5,11 +5,17 @@ namespace AdventOfCode2022.Tests;
 public class Day07Solutions
 {
     [Fact]
-    public void Puzzle1_SumDirectoriesLessThan100k()
+    public void Puzzle1And2_SumDirectoriesLessThan100k_AndFindDirectoryToDelete()
     {
         var files = new Files(Input.Day07);
 
         files.Directories.Where(x => x.Size <= 100_000).Sum(x => x.Size).Should().Be(1391690);
+
+        var smallestToFreeEnough = files
+            .Directories
+            .OrderBy(x => x.Size)
+            .First(x => files.UsedDiskSpace - x.Size <= Files.TotalDiskSpace - Files.SpaceForUpdate);
+        smallestToFreeEnough.Size.Should().Be(5469168);
     }
 
     private const string Example =
@@ -43,5 +49,11 @@ $ ls
         var files = new Files(Example);
 
         files.Directories.Where(x => x.Size <= 100_000).Sum(x => x.Size).Should().Be(95437);
+
+        var smallestToFreeEnough = files
+            .Directories
+            .OrderBy(x => x.Size)
+            .First(x => files.UsedDiskSpace - x.Size <= Files.TotalDiskSpace - Files.SpaceForUpdate);
+        smallestToFreeEnough.Size.Should().Be(24933642);
     }
 }

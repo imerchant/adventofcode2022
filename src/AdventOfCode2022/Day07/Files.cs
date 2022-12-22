@@ -9,7 +9,11 @@ public class Files
 
     private readonly DirectoryNode _head;
 
+    public const int TotalDiskSpace = 70_000_000;
+    public const int SpaceForUpdate = 30_000_000;
+
     public List<DirectoryNode> Directories { get; }
+    public int UsedDiskSpace => _head.Size;
 
     public Files(string input)
     {
