@@ -1,5 +1,3 @@
-using System.Collections;
-
 namespace AdventOfCode2022.Day03;
 
 public class Rucksacks : IEnumerable<Rucksack>
