@@ -5,11 +5,12 @@ namespace AdventOfCode2022.Tests;
 public class Day03Solutions
 {
     [Fact]
-    public void Puzzle1_CountSumOfPriority()
+    public void Puzzle1And2_CountSumOfPriorityIndividually_AndGrouped()
     {
         var rucksacks = new Rucksacks(Input.Day03);
 
         rucksacks.Sum(x => x.Priority).Should().Be(8185);
+        rucksacks.Groups.Sum(x => x.Priority).Should().Be(2817);
     }
 
     [Fact]
@@ -25,7 +26,7 @@ public class Day03Solutions
         rucksack.Priority.Should().Be(16);
     }
 
-    private const string Puzzle1Example =
+    private const string PuzzleExample =
 @"vJrwpWtwJgWrhcsFMMfFFhFp
 jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
 PmmdzqPrVvPwwTWBwg
@@ -34,10 +35,11 @@ ttgJtRGJQctTZtZT
 CrZsJsPPZsGzwwsLwLmpwMDw";
 
     [Fact]
-    public void Puzzle1Example_CountSumOfPriority()
+    public void PuzzleExample_CountSumOfPriorityIndividually_AndGrouped()
     {
-        var rucksacks = new Rucksacks(Puzzle1Example);
+        var rucksacks = new Rucksacks(PuzzleExample);
 
         rucksacks.Sum(x => x.Priority).Should().Be(157);
+        rucksacks.Groups.Sum(x => x.Priority).Should().Be(70);
     }
 }

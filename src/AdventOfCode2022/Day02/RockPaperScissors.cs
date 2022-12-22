@@ -80,7 +80,7 @@ public enum Outcome
     Win
 }
 
-public static class Plays
+internal static class PlayExtensions
 {
     public static int Against(this Play first, Play second)
     {
