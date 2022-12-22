@@ -5,12 +5,12 @@ namespace AdventOfCode2022.Tests;
 public class Day02Solutions
 {
     [Fact]
-    public void Puzzle_FindTotalScore()
+    public void Puzzle1And2_FindTotalScores()
     {
-        var rpc = new RockPaperScissors(Input.Day02);
+        var rps = new RockPaperScissors(Input.Day02);
 
-        rpc.Sum(x => x.Score).Should().Be(12772);
-        rpc.Sum(x => x.Score2).Should().Be(11618);
+        rps.Sum(x => x.Score).Should().Be(12772);
+        rps.Sum(x => x.Score2).Should().Be(11618);
     }
 
     public const string Example =
@@ -21,9 +21,9 @@ C Z";
     [Fact]
     public void Example_CountsScore()
     {
-        var rpc = new RockPaperScissors(Example);
+        var rps = new RockPaperScissors(Example);
 
-        rpc.Sum(x => x.Score).Should().Be(15);
-        rpc.Sum(x => x.Score2).Should().Be(12);
+        rps.Sum(x => x.Score).Should().Be(15);
+        rps.Sum(x => x.Score2).Should().Be(12);
     }
 }

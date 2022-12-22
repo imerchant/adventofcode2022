@@ -2,21 +2,26 @@ namespace AdventOfCode2022.Day06;
 
 public class CommunicationSignal
 {
-    public string Signal { get; }
-    public int MarkerDetected { get; } = -1;
+    public int PacketMarkerDetected { get; }
+    public int MessageMarkerDetected { get; }
 
     public CommunicationSignal(string input)
     {
-        Signal = input;
+        PacketMarkerDetected = FindMarker(4);
+        MessageMarkerDetected = FindMarker(14);
 
-        for (var k = 0; k < Signal.Length - 4; ++k)
+        int FindMarker(int distinctCount)
         {
-            var substring = Signal[k..(k + 4)];
-            if (substring.Distinct().Count() == 4)
+            for (var k = 0; k < input.Length - distinctCount; ++k)
             {
-                MarkerDetected = k + 4;
-                break;
+                var substring = input[k..(k + distinctCount)];
+                if (substring.Distinct().Count() == distinctCount)
+                {
+                    return k + distinctCount;
+                }
             }
+
+            return -1;
         }
     }
 }

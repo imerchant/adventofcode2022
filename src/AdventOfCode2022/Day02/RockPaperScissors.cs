@@ -1,5 +1,3 @@
-using System.Collections;
-
 namespace AdventOfCode2022.Day02;
 
 public class RockPaperScissors : IEnumerable<Round>
