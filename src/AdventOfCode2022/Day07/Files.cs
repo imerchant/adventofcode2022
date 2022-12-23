@@ -39,34 +39,31 @@ public class Files
                     current = current.Children.OfType<DirectoryNode>().First(x => x.Name == split[2]);
                 }
             }
-            else if (command == "$ ls")
+            if (command == "$ ls")
             {
                 continue;
             }
-            else
+            if (DirectoryPattern.TryMatch(command, out var directoryMatch))
             {
-                if (DirectoryPattern.TryMatch(command, out var directoryMatch))
+                var name = directoryMatch.Groups["name"].Value;
+                if (current.Children.Any(x => x.Name == name))
                 {
-                    var name = directoryMatch.Groups["name"].Value;
-                    if (current.Children.Any(x => x.Name == name))
-                    {
-                        continue;
-                    }
-
-                    var directory = new DirectoryNode(current, name);
-                    Directories.Add(directory);
-                    current.Children.Add(directory);
+                    continue;
                 }
 
-                if (FilePattern.TryMatch(command, out var fileMatch))
+                var directory = new DirectoryNode(current, name);
+                Directories.Add(directory);
+                current.Children.Add(directory);
+            }
+            else if (FilePattern.TryMatch(command, out var fileMatch))
+            {
+                var name = fileMatch.Groups["name"].Value;
+                if (current.Children.Any(x => x.Name == name))
                 {
-                    var name = fileMatch.Groups["name"].Value;
-                    if (current.Children.Any(x => x.Name == name))
-                    {
-                        continue;
-                    }
-                    current.Children.Add(new FileNode(name, int.Parse(fileMatch.Groups["size"].Value)));
+                    continue;
                 }
+
+                current.Children.Add(new FileNode(name, int.Parse(fileMatch.Groups["size"].Value)));
             }
         }
     }

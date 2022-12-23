@@ -16,7 +16,7 @@ public class CleaningAssignments : IEnumerable<AssignmentPair>
 
 public class AssignmentPair
 {
-    private static readonly Regex AssignmentPattern = new(@"(\d+)");
+    private static readonly Regex AssignmentPattern = new(@"(\d+)", RegexOptions.Compiled);
 
     public Assignment First { get; }
     public Assignment Second { get; }

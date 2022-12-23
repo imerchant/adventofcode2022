@@ -2,7 +2,7 @@ namespace AdventOfCode2022.Day05;
 
 public class Crates
 {
-    private static readonly Regex MovePattern = new(@"move (?'count'\d+) from (?'source'\d+) to (?'target'\d+)");
+    private static readonly Regex MovePattern = new(@"move (?'count'\d+) from (?'source'\d+) to (?'target'\d+)", RegexOptions.Compiled);
 
     public List<Stack<char>> Stacks { get; }
     public List<string> Moves { get; }
