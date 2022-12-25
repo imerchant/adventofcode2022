@@ -178,6 +178,13 @@ internal static class Extensions
         return dict;
     }
 
+    /// <summary>
+    /// Searches the input string for the first occurrence of the Regular Expression, returning true if there was a match.
+    /// </summary>
+    /// <param name="regex">The Regular Expression to search for.</param>
+    /// <param name="input">The string to search for a match.</param>
+    /// <param name="match">The match.</param>
+    /// <returns>true if the match was successful, false otherwise.</returns>
     public static bool TryMatch(this Regex regex, string input, out Match match)
     {
         match = regex.Match(input);
